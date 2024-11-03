@@ -44,6 +44,9 @@ app_license = "mit"
 
 # include js in doctype views
 # doctype_js = {"doctype" : "public/js/doctype.js"}
+doctype_js = {
+    "Item": "public/js/item.js",
+}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
@@ -137,34 +140,37 @@ app_license = "mit"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
+doc_events = {
+    "Item": {
+        "before_save": "barcode_generator.methods.events.item.before_save"
+    },
 # 	"*": {
 # 		"on_update": "method",
 # 		"on_cancel": "method",
 # 		"on_trash": "method"
 # 	}
-# }
+}
 
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
+scheduler_events = {
 # 	"all": [
 # 		"barcode_generator.tasks.all"
 # 	],
 # 	"daily": [
 # 		"barcode_generator.tasks.daily"
 # 	],
-# 	"hourly": [
-# 		"barcode_generator.tasks.hourly"
-# 	],
+	"hourly": [
+		"barcode_generator.tasks.hourly.barcode_index"
+	],
 # 	"weekly": [
 # 		"barcode_generator.tasks.weekly"
 # 	],
 # 	"monthly": [
 # 		"barcode_generator.tasks.monthly"
 # 	],
-# }
+}
 
 # Testing
 # -------
